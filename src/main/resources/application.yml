@@ -1,0 +1,23 @@
+micronaut:
+  application:
+    name: demo
+  server:
+    port: 8080
+
+---
+datasources:
+  default:
+#    url: ${JDBC_URL:`jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`}
+    url: jdbc:h2:mem:defaultDevDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_UPPER=false
+    driverClassName: ${JDBC_DRIVER:org.h2.Driver}
+    username: ${JDBC_USER:sa}
+    password: ${JDBC_PASSWORD:""}
+
+---
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
